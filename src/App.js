@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [degrees, setDegrees] = useState(null);
   const [location, setLocation] = useState(null);
+  const [userLocation, setUserLocation] = useState(null);
   const [description, setDescription] = useState(null);
   const [icon, setIcon] = useState(null);
   const [humidity, setHumidity] = useState(null);
@@ -14,9 +15,11 @@ function App() {
 
   const API_KEY = "aa29646da73be5e791434efae0db9a84";
 
-  const fetchData = async () => {
+  const fetchData = async (e) => {
+    e.preventDefault();
+
     const res = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=porto&appid=${API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=${API_KEY}&units=metric`
     );
     const data = await res.data;
 
@@ -32,13 +35,16 @@ function App() {
   };
 
   useEffect(() => {
-    fetchData();
+    // fetchData();
   }, []);
 
   return (
     <div className="App">
       <div className="weather">
-        <Input />
+        <Input
+          submit={fetchData}
+          text={(e) => setUserLocation(e.target.value)}
+        />
 
         <div className="weather_display">
           <h3 className="weather_location">Weather in {location}</h3>
