@@ -2,11 +2,11 @@ import React from "react";
 import "./input.css";
 import { FiSearch } from "react-icons/fi";
 
-const input = ({ text, submit }) => {
+const input = ({ text, submit, func }) => {
   return (
-    <form className="input">
+    <form className="input" onSubmit={submit}>
       <input
-        onSubmit={submit}
+        onClick={func}
         onChange={text}
         type={"text"}
         placeholder="Please enter location"

@@ -12,6 +12,7 @@ function App() {
   const [humidity, setHumidity] = useState(null);
   const [wind, setWind] = useState(null);
   const [country, setCountry] = useState("");
+  const [dataFetched, setDataFetched] = useState(false);
 
   const API_KEY = "aa29646da73be5e791434efae0db9a84";
 
@@ -19,7 +20,7 @@ function App() {
     e.preventDefault();
 
     const res = await axios.get(
-      `https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=${API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/weather?q=accra&appid=${API_KEY}&units=metric`
     );
     const data = await res.data;
 
@@ -31,19 +32,37 @@ function App() {
     setWind(data.wind.speed);
     setCountry(data.sys.country);
 
-    console.log(data);
+    setDataFetched(true);
+  };
+
+  const defaultDataFetched = async () => {
+    if (!dataFetched) {
+      const res = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${userLocation}&appid=${API_KEY}&units=metric`
+      );
+      const data = await res.data;
+
+      setDegrees(data.main.temp);
+      setLocation(data.name);
+      setDescription(data.weather[0].description);
+      setIcon(data.weather[0].icon);
+      setHumidity(data.main.humidity);
+      setWind(data.wind.speed);
+      setCountry(data.sys.country);
+    }
   };
 
   useEffect(() => {
-    // fetchData();
+    fetchData();
   }, []);
 
   return (
     <div className="App">
       <div className="weather">
         <Input
-          submit={fetchData}
           text={(e) => setUserLocation(e.target.value)}
+          submit={fetchData}
+          func={fetchData}
         />
 
         <div className="weather_display">
