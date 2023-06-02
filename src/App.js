@@ -42,30 +42,30 @@ function App() {
       }
    };
 
-   const defaultDataFetched = async () => {
-      if (!dataFetched) {
-         try {
-            const res = await axios.get(
-               `https://api.openweathermap.org/data/2.5/weather?q=istanbul&appid=${API_KEY}&units=metric`
-            );
-            const data = await res.data;
-
-            setDegrees(data.main.temp);
-            setLocation(data.name);
-            setDescription(data.weather[0].description);
-            setIcon(data.weather[0].icon);
-            setHumidity(data.main.humidity);
-            setWind(data.wind.speed);
-            setCountry(data.sys.country);
-         } catch {
-            alert('Failed to fetch default data');
-         }
-      }
-   };
-
    useEffect(() => {
+      const defaultDataFetched = async () => {
+         if (!dataFetched) {
+            try {
+               const res = await axios.get(
+                  `https://api.openweathermap.org/data/2.5/weather?q=istanbul&appid=${API_KEY}&units=metric`
+               );
+               const data = await res.data;
+
+               setDegrees(data.main.temp);
+               setLocation(data.name);
+               setDescription(data.weather[0].description);
+               setIcon(data.weather[0].icon);
+               setHumidity(data.main.humidity);
+               setWind(data.wind.speed);
+               setCountry(data.sys.country);
+            } catch {
+               alert('Failed to fetch default data');
+            }
+         }
+      };
+
       defaultDataFetched();
-   }, [dataFetched, defaultDataFetched]);
+   }, [dataFetched]);
 
    return (
       <div className="App">
