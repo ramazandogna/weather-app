@@ -65,7 +65,7 @@ function App() {
 
    useEffect(() => {
       defaultDataFetched();
-   }, [dataFetched]);
+   }, [dataFetched, defaultDataFetched]);
 
    return (
       <div className="App">
