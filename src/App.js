@@ -61,7 +61,7 @@ function App() {
 
    useEffect(() => {
       defaultDataFetched();
-   }, []);
+   }, [dataFetched]);
 
    return (
       <div className="App">
@@ -84,6 +84,7 @@ function App() {
                      <div className="weather_description_head">
                         <span className="weather_icon">
                            <img
+                              alt="icon"
                               src={`http://openweathermap.org/img/w/${icon}.png`}
                            />
                         </span>
