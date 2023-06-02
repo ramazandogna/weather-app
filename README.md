@@ -1,8 +1,6 @@
-# React Watchlist APP
+# React Weatcher APP
 
-In this project, I developed watchlist app using React, Redux-Toolkit, RTK-Query & Redux-Persist, Material-UI, Themoviedb API.
-
-You can search whatever you want movie name and if you want you can add to watchlist or add to watdhed list any movies.
+In this project, you can search for any location and learn about its weather conditions. Simply enter the desired location in the input field and view the corresponding information.
 
 ## Demo
 
@@ -11,14 +9,15 @@ to see the live demo of the project.
 
 ## Techs
 
-React, Redux-Toolkit, RTK-Query & Redux-Persist and Material-UI
+React, Axios, CSS
 
 ## Screenshots
 
-**Add Page**
+**APP**
 
-<!-- ![App Screenshot](https://github.com/ramazandogna/movie-api-app/blob/main/src/assets/images/add-page.png)
+![App Screenshot](https://github.com/ramazandogna/weather-app/blob/main/src/assets/image/screenshot.png)
+![App Screenshot](https://github.com/ramazandogna/weather-app/blob/main/src/assets/image/screenshot2.png)
 
-**Watchlist**
+**Fetch**
 
-![App Screenshot](https://github.com/ramazandogna/movie-api-app/blob/main/src/assets/images/add-page.png)
+![App Screenshot](https://github.com/ramazandogna/weather-app/blob/main/src/assets/image/fetch-operation.png)
