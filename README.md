@@ -4,7 +4,7 @@ In this project, you can search for any location and learn about its weather con
 
 ## Demo
 
-I published my project on netlify. You can click [this link](https://movie-api-app-demo.netlify.app/)
+I published my project on netlify. You can click [this link](https://react-weatherapp-api.netlify.app/)
 to see the live demo of the project.
 
 ## Techs
