@@ -38,24 +38,28 @@ function App() {
 
          setDataFetched(true);
       } catch {
-         alert('You must write to true location');
+         alert('You must write the correct location');
       }
    };
 
    const defaultDataFetched = async () => {
       if (!dataFetched) {
-         const res = await axios.get(
-            `https://api.openweathermap.org/data/2.5/weather?q=istanbul&appid=${API_KEY}&units=metric`
-         );
-         const data = await res.data;
+         try {
+            const res = await axios.get(
+               `https://api.openweathermap.org/data/2.5/weather?q=istanbul&appid=${API_KEY}&units=metric`
+            );
+            const data = await res.data;
 
-         setDegrees(data.main.temp);
-         setLocation(data.name);
-         setDescription(data.weather[0].description);
-         setIcon(data.weather[0].icon);
-         setHumidity(data.main.humidity);
-         setWind(data.wind.speed);
-         setCountry(data.sys.country);
+            setDegrees(data.main.temp);
+            setLocation(data.name);
+            setDescription(data.weather[0].description);
+            setIcon(data.weather[0].icon);
+            setHumidity(data.main.humidity);
+            setWind(data.wind.speed);
+            setCountry(data.sys.country);
+         } catch {
+            alert('Failed to fetch default data');
+         }
       }
    };
 
